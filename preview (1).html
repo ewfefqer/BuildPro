@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BuildPro — Строительные услуги</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    BuildPro
+  </div>
+
+  <nav>
+    <a onclick="showPage('home')">Главная</a>
+    <a onclick="showPage('services')">Услуги</a>
+    <a onclick="showPage('portfolio')">Проекты</a>
+    <a onclick="showPage('contacts')">Контакты</a>
+  </nav>
+
+</header>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+  <div class="hero">
+
+    <div class="hero-content">
+
+      <span>СТРОИТЕЛЬНАЯ КОМПАНИЯ</span>
+
+      <h1>
+        Современное строительство и ремонт
+      </h1>
+
+      <p>
+        Создаем качественные, надежные и стильные строительные проекты
+        для домов, квартир и коммерческих объектов.
+      </p>
+
+      <div class="buttons">
+
+        <button class="btn btn-primary"
+          onclick="showPage('contacts')">
+          Оставить заявку
+        </button>
+
+        <button class="btn btn-secondary"
+          onclick="showPage('portfolio')">
+          Наши проекты
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services" class="page">
+
+  <div class="section-title">
+    <h2>Наши услуги</h2>
+    <p>Полный спектр строительных решений</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+
+      <div class="icon">🏠</div>
+
+      <h3>Строительство домов</h3>
+
+      <p>
+        Строительство современных домов и коттеджей
+        под ключ с гарантией качества.
+      </p>
+
+    </div>
+
+    <div class="service-card">
+
+      <div class="icon">🛠</div>
+
+      <h3>Ремонт квартир</h3>
+
+      <p>
+        Капитальный и дизайнерский ремонт квартир
+        любой сложности.
+      </p>
+
+    </div>
+
+    <div class="service-card">
+
+      <div class="icon">🎨</div>
+
+      <h3>Дизайн интерьера</h3>
+
+      <p>
+        Разработка современных и стильных
+        дизайн-проектов интерьера.
+      </p>
+
+    </div>
+
+    <div class="service-card">
+
+      <div class="icon">🏢</div>
+
+      <h3>Коммерческие объекты</h3>
+
+      <p>
+        Строительство офисов, магазинов и коммерческих помещений.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio" class="page">
+
+  <div class="section-title">
+    <h2>Наши проекты</h2>
+    <p>Примеры выполненных работ</p>
+  </div>
+
+  <div class="gallery">
+
+    <div class="project">
+
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqxm_dqeG74XorbcxUpa4kw0BMY6L9WTGZ0w&s">
+
+      <div class="overlay">
+        <h3>Современная кровля</h3>
+      </div>
+
+    </div>
+
+    <div class="project">
+
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwMnTn0ETnfpS9v1nHEJzeXatb_hYXttbvcA&s">
+
+      <div class="overlay">
+        <h3>Строительство дома</h3>
+      </div>
+
+    </div>
+
+    <div class="project">
+
+      <img src="https://spec-krovlya.ru/wp-content/uploads/2018/06/krovlia-kryshi-svoimi-rukami-1024x681.jpg">
+
+      <div class="overlay">
+        <h3>Монтаж крыши</h3>
+      </div>
+
+    </div>
+
+    <div class="project">
+
+      <img src="https://prd.ru/wp-content/uploads/2017/08/Best-Roofing-Miami-1024x680.jpg">
+
+      <div class="overlay">
+        <h3>Профессиональная кровля</h3>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACTS -->
+
+<section id="contacts" class="page">
+
+  <div class="section-title">
+    <h2>Связаться с нами</h2>
+    <p>Оставьте заявку и мы свяжемся с вами</p>
+  </div>
+
+  <div class="contact-wrapper">
+
+    <div class="contact-box">
+
+      <div class="form-group">
+        <input type="text" id="name" placeholder="Ваше имя">
+      </div>
+
+      <div class="form-group">
+        <input type="tel" id="phone" placeholder="Телефон">
+      </div>
+
+      <div class="form-group">
+        <textarea rows="6" id="message"
+          placeholder="Опишите ваш проект"></textarea>
+      </div>
+
+      <button class="btn btn-primary"
+        onclick="sendForm()">
+        Отправить заявку
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+  Заявка успешно отправлена!
+</div>
+
+<footer>
+  © 2026 BuildPro — Современные строительные решения
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
