@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BuildPro — Строительные услуги</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --orange:#ff7a00;
+    --dark:#111111;
+    --gray:#777;
+    --light:#f5f5f5;
+    --white:#ffffff;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--light);
+    color:var(--dark);
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    padding:20px 60px;
+
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    backdrop-filter:blur(15px);
+    background:rgba(17,17,17,0.75);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:800;
+    color:var(--orange);
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+    font-weight:500;
+    position:relative;
+    transition:0.3s;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:var(--orange);
+    left:0;
+    bottom:-6px;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* PAGES */
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding:120px 70px 80px;
+}
+
+.active{
+    display:block;
+}
+
+/* HERO */
+
+.hero{
+    height:85vh;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1800&auto=format&fit=crop')
+    center/cover;
+
+    display:flex;
+    align-items:center;
+    padding:80px;
+}
+
+.hero-content{
+    max-width:700px;
+    color:white;
+}
+
+.hero-content span{
+    color:var(--orange);
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.hero h1{
+    font-size:72px;
+    line-height:1.1;
+    margin:25px 0;
+}
+
+.hero p{
+    font-size:20px;
+    color:#ddd;
+    line-height:1.7;
+    margin-bottom:40px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:18px 36px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn-primary{
+    background:var(--orange);
+    color:white;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(255,122,0,0.35);
+}
+
+.btn-secondary{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.25);
+    color:white;
+}
+
+.btn-secondary:hover{
+    background:white;
+    color:black;
+}
+
+/* TITLES */
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:var(--gray);
+    font-size:18px;
+}
+
+/* SERVICES */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.service-card{
+    background:white;
+    border-radius:24px;
+    padding:40px 30px;
+    transition:0.35s;
+    box-shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.12);
+}
+
+.icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    background:rgba(255,122,0,0.1);
+    color:var(--orange);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.service-card h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.service-card p{
+    color:var(--gray);
+    line-height:1.7;
+}
+
+/* PORTFOLIO */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.project{
+    position:relative;
+    overflow:hidden;
+    border-radius:25px;
+    height:320px;
+}
+
+.project img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.project:hover img{
+    transform:scale(1.1);
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,rgba(0,0,0,0.8));
+
+    display:flex;
+    align-items:flex-end;
+
+    padding:30px;
+    color:white;
+}
+
+.overlay h3{
+    font-size:28px;
+}
+
+/* CONTACT */
+
+.contact-wrapper{
+    max-width:800px;
+    margin:auto;
+}
+
+.contact-box{
+    background:white;
+    padding:50px;
+    border-radius:30px;
+    box-shadow:0 15px 50px rgba(0,0,0,0.08);
+}
+
+.form-group{
+    margin-bottom:25px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:#f2f2f2;
+    font-size:16px;
+    font-family:'Montserrat',sans-serif;
+}
+
+textarea{
+    resize:none;
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+    top:30px;
+    right:30px;
+
+    background:#1db954;
+    color:white;
+
+    padding:18px 28px;
+    border-radius:14px;
+
+    display:none;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+
+    z-index:9999;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0d0d0d;
+    color:#aaa;
+    text-align:center;
+    padding:35px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+header{
+    padding:20px;
+    flex-direction:column;
+}
+
+nav{
+    margin-top:15px;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.page{
+    padding:140px 20px 70px;
+}
+
+.hero{
+    padding:40px;
+    height:auto;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.hero p{
+    font-size:17px;
+}
+
+.section-title h2{
+    font-size:34px;
+}
+
+.buttons{
+    flex-direction:column;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+BuildPro
+</div>
+
+<nav>
+<a onclick="showPage('home')">Главная</a>
+<a onclick="showPage('services')">Услуги</a>
+<a onclick="showPage('portfolio')">Проекты</a>
+<a onclick="showPage('contacts')">Контакты</a>
+</nav>
+
+</header>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<div class="hero">
+
+<div class="hero-content">
+
+<span>СТРОИТЕЛЬНАЯ КОМПАНИЯ</span>
+
+<h1>
+Современное строительство и ремонт
+</h1>
+
+<p>
+Создаем качественные, надежные и стильные строительные проекты
+для домов, квартир и коммерческих объектов.
+</p>
+
+<div class="buttons">
+
+<button class="btn btn-primary"
+onclick="showPage('contacts')">
+Оставить заявку
+</button>
+
+<button class="btn btn-secondary"
+onclick="showPage('portfolio')">
+Наши проекты
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services" class="page">
+
+<div class="section-title">
+<h2>Наши услуги</h2>
+<p>Полный спектр строительных решений</p>
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<div class="icon">🏠</div>
+
+<h3>Строительство домов</h3>
+
+<p>
+Строительство современных домов и коттеджей
+под ключ с гарантией качества.
+</p>
+
+</div>
+
+<div class="service-card">
+
+<div class="icon">🛠</div>
+
+<h3>Ремонт квартир</h3>
+
+<p>
+Капитальный и дизайнерский ремонт квартир
+любой сложности.
+</p>
+
+</div>
+
+<div class="service-card">
+
+<div class="icon">🎨</div>
+
+<h3>Дизайн интерьера</h3>
+
+<p>
+Разработка современных и стильных
+дизайн-проектов интерьера.
+</p>
+
+</div>
+
+<div class="service-card">
+
+<div class="icon">🏢</div>
+
+<h3>Коммерческие объекты</h3>
+
+<p>
+Строительство офисов, магазинов и коммерческих помещений.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio" class="page">
+
+<div class="section-title">
+<h2>Наши проекты</h2>
+<p>Примеры выполненных работ</p>
+</div>
+
+<div class="gallery">
+
+<div class="project">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqxm_dqeG74XorbcxUpa4kw0BMY6L9WTGZ0w&s">
+
+<div class="overlay">
+<h3>Современная кровля</h3>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwMnTn0ETnfpS9v1nHEJzeXatb_hYXttbvcA&s">
+
+<div class="overlay">
+<h3>Строительство дома</h3>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="https://spec-krovlya.ru/wp-content/uploads/2018/06/krovlia-kryshi-svoimi-rukami-1024x681.jpg">
+
+<div class="overlay">
+<h3>Монтаж крыши</h3>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="https://prd.ru/wp-content/uploads/2017/08/Best-Roofing-Miami-1024x680.jpg">
+
+<div class="overlay">
+<h3>Профессиональная кровля</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACTS -->
+
+<section id="contacts" class="page">
+
+<div class="section-title">
+<h2>Связаться с нами</h2>
+<p>Оставьте заявку и мы свяжемся с вами</p>
+</div>
+
+<div class="contact-wrapper">
+
+<div class="contact-box">
+
+<div class="form-group">
+<input type="text" id="name" placeholder="Ваше имя">
+</div>
+
+<div class="form-group">
+<input type="tel" id="phone" placeholder="Телефон">
+</div>
+
+<div class="form-group">
+<textarea rows="6" id="message"
+placeholder="Опишите ваш проект"></textarea>
+</div>
+
+<button class="btn btn-primary"
+onclick="sendForm()">
+Отправить заявку
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+Заявка успешно отправлена!
+</div>
+
+<footer>
+© 2026 BuildPro — Современные строительные решения
+</footer>
+
+<script>
+
+function showPage(pageId){
+
+let pages = document.querySelectorAll('.page');
+
+pages.forEach(page => {
+page.classList.remove('active');
+});
+
+document.getElementById(pageId).classList.add('active');
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+}
+
+function sendForm(){
+
+let name = document.getElementById('name').value;
+let phone = document.getElementById('phone').value;
+
+if(name === '' || phone === ''){
+alert('Пожалуйста, заполните имя и телефон');
+return;
+}
+
+let popup = document.getElementById('popup');
+
+popup.style.display = 'block';
+
+setTimeout(() => {
+popup.style.display = 'none';
+},3000);
+
+document.getElementById('name').value = '';
+document.getElementById('phone').value = '';
+document.getElementById('message').value = '';
+
+}
+
+</script>
+
+</body>
+</html>
